@@ -1,17 +1,17 @@
 provider "vsphere" {
   user           = "${var.vsphere_user}"
   password       = "${var.vsphere_password}"
-  vsphere_server = "vc-01.redhouse.hq"
+  vsphere_server = "${var.vsphere_vcenter}"
   # If you have a self-signed cert
   allow_unverified_ssl = true
 }
 
 data "vsphere_datacenter" "dc" {
-  name = "${var.vsphere_datacenter}"
+  name = "Eng Prod"
 }
 
 data "vsphere_datastore" "datastore" {
-  name          = "${var.vm_datastore}"
+  name          = "datastore-46"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
 
@@ -31,7 +31,7 @@ data "vsphere_virtual_machine" "template" {
 }
 
 resource "vsphere_virtual_machine" "vm" {
-  name             = "Ansible-Harsh"
+  name             = "Ansible-Hv"
   resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
   datastore_id     = "${data.vsphere_datastore.datastore.id}"
   num_cpus = 4
@@ -53,10 +53,13 @@ resource "vsphere_virtual_machine" "vm" {
 
   clone {
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
+    
+      
 
     customize {
+      timeout = 50
       linux_options {
-        host_name = "Ansible-Harsh"
+        host_name = "Ansible-Hv"
         domain    = "ansible.simpsons.qa"
       }
       network_interface {}
