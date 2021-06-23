@@ -12,6 +12,10 @@ variable "vsphere_password" {
   sensitive = true
 }
 
+variable "vsphere_datacenter" {
+  description = "vSphere datacenter"
+}
+
 
 
 
