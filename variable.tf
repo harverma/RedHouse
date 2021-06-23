@@ -12,9 +12,7 @@ variable "vsphere_password" {
   sensitive = true
 }
 
-variable "vsphere_server" {
-  description = "vCenter server FQDN or IP"
-}
+
 
 
 
