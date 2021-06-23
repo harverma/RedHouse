@@ -10,6 +10,10 @@ data "vsphere_datacenter" "dc" {
   name = "${var.vsphere_datacenter}"
 }
 
+data "vsphere_datacenter" "temp" {
+  name = "${var.vsphere_datacenter_temp}"
+}
+
 data "vsphere_datastore" "datastore" {
   name          = "datastore-46"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
