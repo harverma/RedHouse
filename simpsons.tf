@@ -1,35 +1,3 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@harverma 
-harverma
-/
-VmWare
-1
-0
-0
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-VmWare/redhouse.tf
-@harverma
-harverma name
-Latest commit 19c4831 19 minutes ago
- History
- 1 contributor
-76 lines (62 sloc)  2.04 KB
-  
 provider "vsphere" {
   user           = "${var.vsphere_user}"
   password       = "${var.vsphere_password}"
@@ -106,16 +74,3 @@ resource "vsphere_virtual_machine" "vm" {
 output "my_ip_address" {
  value = "${vsphere_virtual_machine.vm.default_ip_address}"
 }
-© 2021 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
-Loading complete
