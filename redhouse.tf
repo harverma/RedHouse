@@ -34,8 +34,8 @@ resource "vsphere_virtual_machine" "vm" {
   name             = "Ansible-Hv"
   resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
   datastore_id     = "${data.vsphere_datastore.datastore.id}"
-  num_cpus = 4
-  memory   = 8192
+  num_cpus = "${var.vm_cpu}"
+  memory   = "${var.vm_ram}"
   guest_id = "${data.vsphere_virtual_machine.template.guest_id}"
   scsi_type = "${data.vsphere_virtual_machine.template.scsi_type}"
 
