@@ -20,5 +20,9 @@ variable "vm_cpu" {
   description = "Number of vCPU for the vSphere virtual machines"
 }
 
+variable "vm_ram" {
+  description = "Amount of RAM for the vSphere virtual machines (example: 2048)"
+}
+
 
 
