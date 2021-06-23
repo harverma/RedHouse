@@ -31,7 +31,7 @@ data "vsphere_network" "network" {
 
 data "vsphere_virtual_machine" "template" {
   name          = "Ansible"
-  datacenter_id = "${data.vsphere_datacenter.dc.id}"
+  datacenter_id = "${data.vsphere_datacenter.temp.id}"
 }
 
 resource "vsphere_virtual_machine" "vm" {
