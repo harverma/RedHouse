@@ -7,7 +7,7 @@ provider "vsphere" {
 }
 
 data "vsphere_datacenter" "dc" {
-  name = "Eng Prod"
+  name = "${var.vsphere_datacenter}"
 }
 
 data "vsphere_datastore" "datastore" {
