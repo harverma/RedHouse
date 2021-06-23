@@ -16,7 +16,9 @@ variable "vsphere_datacenter" {
   description = "vSphere datacenter"
 }
 
-
+variable "vm_cpu" {
+  description = "Number of vCPU for the vSphere virtual machines"
+}
 
 
 
