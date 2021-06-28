@@ -30,7 +30,7 @@ data "vsphere_network" "network" {
 }
 
 data "vsphere_virtual_machine" "template" {
-  name          = "Ansible"
+  name          = "${var.vmtemp}"
   datacenter_id = "${data.vsphere_datacenter.temp.id}"
 }
 
