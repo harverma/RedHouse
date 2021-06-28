@@ -28,6 +28,9 @@ variable "vm_ram" {
   description = "Amount of RAM for the vSphere virtual machines (example: 2048)"
 }
 
+variable "vmtemp" {
+  description = "Name of the template available in the vSphere."
+}
 
 
 
