@@ -44,3 +44,6 @@ variable "vsphere_host" {
   description = "The Hostname of the vSphere virtual machines and the hostname of the machine"
 }
 
+variable "vm_network" {
+  description = "Network used for the vSphere virtual machines"
+}
