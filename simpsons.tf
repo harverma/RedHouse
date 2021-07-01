@@ -35,7 +35,7 @@ data "vsphere_virtual_machine" "template" {
 }
 
 resource "vsphere_virtual_machine" "vm" {
-  name             = "Ansible-Hv1"
+  name             = "${var.vm_name}"
   resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
   datastore_id     = "${data.vsphere_datastore.datastore.id}"
   num_cpus = "${var.vm_cpu}"
@@ -63,7 +63,7 @@ resource "vsphere_virtual_machine" "vm" {
     customize {
       timeout = 50
       linux_options {
-        host_name = "Ansible-Hv"
+        host_name = "${var.vsphere_host}"
         domain    = "ansible.simpsons.qa"
       }
       network_interface {}
