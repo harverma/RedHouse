@@ -10,6 +10,11 @@ data "vsphere_datacenter" "dc" {
   name = "${var.vsphere_datacenter}"
 }
 
+data "vsphere_host" "hosts" {
+  name = "${var.vsphere_host}"
+  datacenter_id = "${data.vsphere_datacenter.dc.id}"
+}
+
 data "vsphere_datacenter" "temp" {
   name = "${var.vsphere_datacenter_temp}"
 }
@@ -20,7 +25,7 @@ data "vsphere_datastore" "datastore" {
 }
 
   data "vsphere_resource_pool" "pool" {
-  name          = "Eng_Prod_Pool"
+  name          = "${var.vsphere_host}/Resources"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
 
