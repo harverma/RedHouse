@@ -67,8 +67,8 @@ resource "vsphere_virtual_machine" "vm" {
 
     customize {
       timeout = 50
-      linux_options {
-        host_name = "${var.vm_name}"
+      windows_options {
+        computer_name = "${var.vm_name}"
         domain    = "ansible.simpsons.qa"
       }
       network_interface {}
