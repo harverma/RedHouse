@@ -69,7 +69,6 @@ resource "vsphere_virtual_machine" "vm" {
       timeout = 50
       windows_options {
         computer_name = "${var.vm_name}"
-        domain    = "ansible.simpsons.qa"
       }
       network_interface {}
     }
