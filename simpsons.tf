@@ -77,6 +77,7 @@ resource "vsphere_virtual_machine" "vm" {
            "cmd.exe /C Powershell.exe -ExecutionPolicy get-volume",
            "cmd.exe /C Powershell.exe -ExecutionPolicy $size = Get-PartitionSupportedSize -DriveLetter C",
            "cmd.exe /C Powershell.exe -ExecutionPolicy Resize-Partition -DriveLetter C -Size $size.SizeMax",
+        ]   
         
       }
       network_interface {}
