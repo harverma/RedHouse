@@ -70,6 +70,14 @@ resource "vsphere_virtual_machine" "vm" {
       timeout = 50
       windows_options {
         computer_name = "${var.vm_name}"
+        admin_password          = "control*88"
+        auto_logon              = true
+        auto_logon_count        = 1
+        run_once_command_list = [
+           "cmd.exe /C Powershell.exe -ExecutionPolicy get-volume",
+           "cmd.exe /C Powershell.exe -ExecutionPolicy $size = Get-PartitionSupportedSize -DriveLetter C",
+           "cmd.exe /C Powershell.exe -ExecutionPolicy Resize-Partition -DriveLetter C -Size $size.SizeMax",
+        
       }
       network_interface {}
     }
