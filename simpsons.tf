@@ -74,9 +74,9 @@ resource "vsphere_virtual_machine" "vm" {
         auto_logon              = true
         auto_logon_count        = 1
         run_once_command_list = [
-           "cmd.exe /C Powershell.exe -ExecutionPolicy -command "get-volume"",
-           "cmd.exe /C Powershell.exe -ExecutionPolicy -command "$size = Get-PartitionSupportedSize -DriveLetter C"",
-           "cmd.exe /C Powershell.exe -ExecutionPolicy -command "Resize-Partition -DriveLetter C -Size $size.SizeMax"",
+           "cmd.exe /C Powershell.exe -ExecutionPolicy -command 'get-volume' ",
+           "cmd.exe /C Powershell.exe -ExecutionPolicy -command '$size = Get-PartitionSupportedSize -DriveLetter C' ",
+           "cmd.exe /C Powershell.exe -ExecutionPolicy -command 'Resize-Partition -DriveLetter C -Size $size.SizeMax' ",
         ]   
         
       }
