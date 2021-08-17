@@ -64,16 +64,12 @@ resource "vsphere_virtual_machine" "vm" {
 
   clone {
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
-    
-      
-
     customize {
     timeout = 50
     windows_options {
     computer_name = "${var.vm_name}"
     admin_password = "control*88"
-                
-      }
+    }
       network_interface {}
     }
   }
