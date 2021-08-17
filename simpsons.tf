@@ -66,6 +66,7 @@ resource "vsphere_virtual_machine" "vm" {
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
      timeout = 120
     customize {
+    timeout =10
     windows_options {
     computer_name = "${var.vm_name}"
     admin_password = "control*88"
