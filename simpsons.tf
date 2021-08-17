@@ -74,10 +74,10 @@ resource "vsphere_virtual_machine" "vm" {
       
 
     customize {
-      timeout = 50
-      windows_options {
-        computer_name = "${var.vm_name}"
-        admin_password          = "control*88"
+    timeout = 50
+    windows_options {
+    computer_name = "${var.vm_name}"
+    admin_password = "control*88"
                 
       }
       network_interface {}
