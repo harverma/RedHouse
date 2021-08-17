@@ -64,6 +64,7 @@ resource "vsphere_virtual_machine" "vm" {
 
   clone {
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
+     timeout = 50
     customize {
     timeout = 50
     windows_options {
