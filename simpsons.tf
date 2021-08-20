@@ -24,11 +24,11 @@ data "vsphere_datastore" "datastore" {
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
 
-  data "vsphere_resource_pool" "pool" {
-  name          = "/${var.vsphere_host}/Resources"
+data "vsphere_compute_cluster" "cluster" {
+  name          = "QA_Cluster"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
-
+  
 data "vsphere_network" "network" {
   name          = "${var.vm_network}"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
@@ -41,7 +41,7 @@ data "vsphere_virtual_machine" "template" {
 
 resource "vsphere_virtual_machine" "vm" {
   name             = "${var.vm_name}"
-  resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
+  resource_pool_id = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
   datastore_id     = "${data.vsphere_datastore.datastore.id}"
   num_cpus = "${var.vm_cpu}"
   memory   = "${var.vm_ram}"
