@@ -25,7 +25,7 @@ data "vsphere_datastore" "datastore" {
 }
 
   data "vsphere_resource_pool" "pool" {
-  name          = "QA_Cluster/Resources"
+  name          = "${var.vsphere_host}"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
 
