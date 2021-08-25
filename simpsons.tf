@@ -70,17 +70,35 @@ resource "vsphere_virtual_machine" "vm" {
 
   clone {
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
-     timeout = 180
+    timeout = 180
     customize {
-    timeout =30
-    windows_options {
-    computer_name = "${var.vm_name}"
-    admin_password = "control*88"
-    }
+      timeout =30
+         windows_options {
+           computer_name = "${var.vm_name}"
+           admin_password = "control*88"
+         }
       network_interface {}
     }
   }
+  
+  provisioner "remote-exec" {
+     connection {
+        type     = "winrm"
+        timeout  = "5m"
+        user     = "Administrator"
+        password = "control*88"
+        host     = "${vsphere_virtual_machine.vm.default_ip_address}"
+        port     = "5985"
+        https    = false
+        insecure = true
+      } 
+
+        inline = [
+         "powershell -ExecutionPolicy Unrestricted -File C:\\script\\disk-part.ps1"
+        ]
+        } 
 }
+
 
 output "my_ip_address" {
  value = "${vsphere_virtual_machine.vm.default_ip_address}"
