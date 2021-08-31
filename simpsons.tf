@@ -48,7 +48,7 @@ resource "vsphere_virtual_machine" "vm" {
   guest_id = "${data.vsphere_virtual_machine.template.guest_id}"
   scsi_type = "${data.vsphere_virtual_machine.template.scsi_type}"
 
-  network_interface {
+ network_interface {
     network_id   = "${data.vsphere_network.network.id}"
     adapter_type = "${data.vsphere_virtual_machine.template.network_interface_types[0]}"
   }
@@ -71,17 +71,36 @@ resource "vsphere_virtual_machine" "vm" {
   clone {
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
     timeout = 180
-    customize {
+      customize {
       timeout =30
          windows_options {
            computer_name = "${var.vm_name}"
            admin_password = "control*88"
+           join_domain      = "simpsons.qa"
+           domain_admin_user = "hverma"
+           domain_admin_password = "Idera*237723" 
          }
       network_interface {}
     }
   }
+  provisioner "remote-exec" {
+      connection {
+        type     = "winrm"
+        timeout  = "5m"
+        user     = "Administrator"
+        password = "control*88"
+        host     = "${vsphere_virtual_machine.vm.default_ip_address}"
+        port     = "5985"
+        https    = false
+        insecure = true
+      } 
+
+        inline = [
+         "powershell -ExecutionPolicy Unrestricted -File C:\\script\\disk-part.ps1"
+        ]
+ }
 }
 
-output "my_ip_address" {
- value = "${vsphere_virtual_machine.vm.default_ip_address}"
+   output "my_ip_address" {
+   value = "${vsphere_virtual_machine.vm.default_ip_address}"
 }
