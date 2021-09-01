@@ -76,9 +76,9 @@ resource "vsphere_virtual_machine" "vm" {
          windows_options {
            computer_name = "${var.vm_name}"
            admin_password = "control*88"
-           join_domain      = "simpsons.qa"
-           domain_admin_user = "hverma"
-           domain_admin_password = "Idera*237723" 
+           join_domain      = "${var.windomain}"
+           domain_admin_user = "${var.domain_admin_user}"
+           domain_admin_password = "${domain_admin_password}" 
          }
       network_interface {}
     }
