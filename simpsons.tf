@@ -75,7 +75,7 @@ resource "vsphere_virtual_machine" "vm" {
       timeout =30
          windows_options {
            computer_name = "${var.vm_name}"
-           admin_password = "control*88"
+           admin_password = "${var.local_adminpass}"
            join_domain      = "${var.windomain}"
            domain_admin_user = "${var.domain_admin_user}"
            domain_admin_password = "${var.domain_admin_password}" 
@@ -88,7 +88,7 @@ resource "vsphere_virtual_machine" "vm" {
         type     = "winrm"
         timeout  = "5m"
         user     = "Administrator"
-        password = "control*88"
+        password = "${var.local_adminpass}"
         host     = "${vsphere_virtual_machine.vm.default_ip_address}"
         port     = "5985"
         https    = false
