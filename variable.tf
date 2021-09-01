@@ -44,6 +44,11 @@ variable "vm_name" {
   description = "The name of the vSphere virtual machines and the hostname of the machine"
 }
 
+variable "local_adminpass" {
+  description = "The administrator password for this virtual machine.(Required) when using join_windomain option."
+}
+
+
 variable "vm_network" {
   description = "Network used for the vSphere virtual machines"
 }
