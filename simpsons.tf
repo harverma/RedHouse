@@ -78,7 +78,7 @@ resource "vsphere_virtual_machine" "vm" {
            admin_password = "control*88"
            join_domain      = "${var.windomain}"
            domain_admin_user = "${var.domain_admin_user}"
-           domain_admin_password = "${domain_admin_password}" 
+           domain_admin_password = "${var.domain_admin_password}" 
          }
       network_interface {}
     }
