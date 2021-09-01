@@ -65,10 +65,4 @@ variable "domain_admin_password" {
   description = "Doamin User pssword to join the server to AD.(Required) when using join_windomain option."
 }
 
-variable "disk_size_gb" {
-  description = "Define size of disk in GB"
-}
 
-variable "disk_label" {
-  description = "Storage data disk labels."
-}
