@@ -60,7 +60,6 @@ resource "vsphere_virtual_machine" "vm" {
     thin_provisioned = "${data.vsphere_virtual_machine.template.disks.0.thin_provisioned}"
   }
    
-  }
 
   clone {
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
