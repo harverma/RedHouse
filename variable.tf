@@ -16,6 +16,10 @@ variable "vsphere_datacenter" {
   description = "vSphere datacenter"
 }
 
+variable "vsphere_compute_cluster" {
+  description = "vSphere Compute Cluster"
+}
+
 variable "vsphere_host" {
   description = "vSphere Hosts"
 }
