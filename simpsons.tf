@@ -1,5 +1,5 @@
 provider "vsphere" {
-   user           = "${var.vsphere_user}"
+  user           = "${var.vsphere_user}"
   password       = "${var.vsphere_password}"
   vsphere_server = "10.31.50.52"
   # If you have a self-signed cert
@@ -60,16 +60,26 @@ resource "vsphere_virtual_machine" "vm" {
     thin_provisioned = "${data.vsphere_virtual_machine.template.disks.0.thin_provisioned}"
   }
    
- 
+  disk {
+    label            = "disk1"
+    size             = "${data.vsphere_virtual_machine.template.disks.1.size}"
+    eagerly_scrub    = "${data.vsphere_virtual_machine.template.disks.1.eagerly_scrub}"
+    thin_provisioned = "${data.vsphere_virtual_machine.template.disks.1.thin_provisioned}"
+    unit_number = 1
+  }  
 
   clone {
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
      timeout = 180
-    customize {
-    timeout =30
-    windows_options {
-    computer_name = "${var.vm_name}"
-    admin_password = "control*88"
+     customize {
+      timeout =30
+      windows_options {
+           computer_name = "${var.vm_name}"
+           admin_password = "${var.local_adminpass}"
+           join_domain      = "${var.windomain}"
+           domain_admin_user = "${var.domain_admin_user}"
+           domain_admin_password = "${var.domain_admin_password}"
+       
     }
       network_interface {}
     }
