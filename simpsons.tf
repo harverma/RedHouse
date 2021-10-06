@@ -25,7 +25,12 @@ data "vsphere_datastore" "datastore" {
 }
 
 data "vsphere_compute_cluster" "cluster" {
-  name          = "${var.vsphere_host}"
+  name          = "${var.vsphere_compute_cluster}"
+  datacenter_id = "${data.vsphere_datacenter.dc.id}"
+}
+
+data "vsphere_host" "hosts" {
+  name = "${var.vsphere_host}"
   datacenter_id = "${data.vsphere_datacenter.dc.id}"
 }
   
