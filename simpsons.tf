@@ -1,10 +1,10 @@
-terraform{
-required_providers { 
-  vsphere = {
-    source = "hashicorp/vsphere"
-    version = "2.0.2"
+terraform {
+  required_providers {
+    vsphere = {
+      source = "hashicorp/vsphere"
+      version = "2.0.1"
+    }
   }
-}
 }
 
 provider "vsphere" {
