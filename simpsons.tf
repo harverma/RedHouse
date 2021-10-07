@@ -3,7 +3,6 @@ provider "vsphere" {
   password       = "${var.vsphere_password}"
   vsphere_server = "10.31.50.52"
   # If you have a self-signed cert
-  version = "2.0.2"
   allow_unverified_ssl = true
 }
 
@@ -84,6 +83,22 @@ resource "vsphere_virtual_machine" "vm" {
       network_interface {}
     }
   }
+    provisioner "remote-exec" {
+      connection {
+        type     = "winrm"
+        timeout  = "5m"
+        user     = "Administrator"
+        password = "${var.local_adminpass}"
+        host     = "${vsphere_virtual_machine.vm.default_ip_address}"
+        port     = "5985"
+        https    = false
+        insecure = true
+      } 
+
+        inline = [
+         "powershell -ExecutionPolicy Unrestricted -File C:\\script\\disk-part.ps1"
+        ]
+ }
 }
 
    output "my_ip_address" {
