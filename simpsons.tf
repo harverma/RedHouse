@@ -3,7 +3,7 @@ provider "vsphere" {
   password       = "${var.vsphere_password}"
   vsphere_server = "10.31.50.52"
   # If you have a self-signed cert
-  version = 2.0.2
+  version = "2.0.2"
   allow_unverified_ssl = true
 }
 
