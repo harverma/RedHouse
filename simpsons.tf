@@ -1,4 +1,10 @@
-provider "vsphere" {
+  
+terraform{
+
+required_provider { 
+  vsphere = {
+    source = "hashicorp/vsphere"
+    version = "2.0.2"
   user           = "${var.vsphere_user}"
   password       = "${var.vsphere_password}"
   version = "2.0.0"
@@ -6,6 +12,8 @@ provider "vsphere" {
   # If you have a self-signed cert
   allow_unverified_ssl = true
 }
+}
+}  
 
 data "vsphere_datacenter" "dc" {
   name = "${var.vsphere_datacenter}"
