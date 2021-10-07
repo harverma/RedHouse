@@ -1,4 +1,6 @@
 provider "vsphere" {
+  source = "hashicorp/terraform-provider-vsphere"
+  version = "2.0.2"
   user           = "${var.vsphere_user}"
   password       = "${var.vsphere_password}"
   vsphere_server = "10.31.50.52"
