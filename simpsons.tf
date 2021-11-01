@@ -82,10 +82,10 @@ resource "vsphere_virtual_machine" "vm" {
   clone {
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
     timeout = 180
-    wait_for_guest_net_timeout = 1
-      customize {
+          customize {
         timeout =30
         windows_options {
+             wait_for_guest_net_timeout = 1
              computer_name = "${var.vm_name}"
              admin_password = "${var.local_adminpass}"
              join_domain      = "${var.windomain}"
