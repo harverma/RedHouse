@@ -54,6 +54,8 @@ resource "vsphere_virtual_machine" "vm" {
     name             = "${var.vm_name}"
     resource_pool_id = "${data.vsphere_resource_pool.pool.id}"
     datastore_id     = "${data.vsphere_datastore.datastore.id}"
+    wait_for_guest_net_timeout = 5
+    wait_for_guest_ip_timeout  = 5
     num_cpus = "${var.vm_cpu}"
     memory   = "${var.vm_ram}"
     guest_id = "${data.vsphere_virtual_machine.template.guest_id}"
