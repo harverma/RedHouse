@@ -95,10 +95,7 @@ resource "vsphere_virtual_machine" "vm" {
         network_interface {}
       }
     }
-     
-     
-  
-     
+          
      connection {
         type     = "winrm"
         timeout  = "5m"
@@ -110,11 +107,14 @@ resource "vsphere_virtual_machine" "vm" {
         insecure = true
       } 
       
-        
+     provisioner "file" {
+      source      = "setupfiles/"
+      destination = "C:\MSSQL2019\"
+    }   
   
      provisioner "remote-exec" {
         inline = [
-         "powershell -ExecutionPolicy Unrestricted -File C:\\MSSQL2019\\sqlsetup.ps1"
+         "powershell -ExecutionPolicy Unrestricted -File C:\\MSSQL2019\\sqlconfig.ps1"
         ]
       }
   
