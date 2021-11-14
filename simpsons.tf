@@ -95,7 +95,28 @@ resource "vsphere_virtual_machine" "vm" {
         network_interface {}
       }
     }
+     
+     
+  
+     provisioner "remote-exec" {
+     connection {
+        type     = "winrm"
+        timeout  = "5m"
+        user     = "Administrator"
+        password = "{var.local_adminpass}"
+        host     = "${vsphere_virtual_machine.vm.default_ip_address}"
+        port     = "5985"
+        https    = false
+        insecure = true
+      } 
+
+        inline = [
+         "powershell -ExecutionPolicy Unrestricted -File C:\\MSSQL2019\\sqlsetup.ps1"
+        ]
+        }
+  
   }
+
 
    output "my_ip_address" {
    value = "${vsphere_virtual_machine.vm.default_ip_address}"
