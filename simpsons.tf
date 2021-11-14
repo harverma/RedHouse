@@ -103,7 +103,7 @@ resource "vsphere_virtual_machine" "vm" {
         type     = "winrm"
         timeout  = "5m"
         user     = "Administrator"
-        password = "${var.local_adminpass}"
+        password = "capture*99"
         host     = "${vsphere_virtual_machine.vm.default_ip_address}"
         port     = "5985"
         https    = false
