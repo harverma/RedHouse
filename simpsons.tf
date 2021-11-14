@@ -109,7 +109,7 @@ resource "vsphere_virtual_machine" "vm" {
       
      provisioner "file" {
       source      = "setupfiles/"
-      destination = "C:\MSSQL2019\"
+      destination = "C:\\MSSQL2019\\"
     }   
   
      provisioner "remote-exec" {
