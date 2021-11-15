@@ -94,41 +94,8 @@ resource "vsphere_virtual_machine" "vm" {
          }
         network_interface {}
       }
-    }
-  
-  provisioner "file" {
-     connection {
-        type     = "winrm"
-        timeout  = "5m"
-        user     = "Administrator"
-        password = "capture*99"
-        host     = "${vsphere_virtual_machine.vm.default_ip_address}"
-        port     = "5985"
-        https    = false
-        insecure = true
-      } 
-      source      = "setupfiles/"
-      destination = "C:\\MSSQL2019\\"
-    }
-  
-  provisioner "remote-exec" {
-     connection {
-        type     = "winrm"
-        timeout  = "5m"
-        user     = "Administrator"
-        password = "capture*99"
-        host     = "${vsphere_virtual_machine.vm.default_ip_address}"
-        port     = "5985"
-        https    = false
-        insecure = true
-      }     
-        inline = [
-         "powershell -ExecutionPolicy Unrestricted -File C:\\MSSQL2019\\sqlconfig.ps1"
-        ]
-      }   
-  
+    }   
   }
-
 
    output "my_ip_address" {
    value = "${vsphere_virtual_machine.vm.default_ip_address}"
