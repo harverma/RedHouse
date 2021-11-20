@@ -4,8 +4,8 @@ ansible_ssh_user=root
 ansible_ssh_pass=control*88
 
 [windows:vars]
-ansible_user=Administrator
-ansible_password="capture*99"
+ansible_user=automation
+ansible_password="H2Y9bYAVZg6EAEGY"
 ansible_connection=winrm
 ansible_winrm_server_cert_validation=ignore
 ansible_port=5986
