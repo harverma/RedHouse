@@ -86,6 +86,7 @@ resource "vsphere_virtual_machine" "vm" {
           customize {
         timeout =50
         windows_options {
+             timeout =50
              computer_name = "${var.vm_name}"
              admin_password = "${var.local_adminpass}"
          }
