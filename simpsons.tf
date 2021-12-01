@@ -88,9 +88,9 @@ resource "vsphere_virtual_machine" "vm" {
         windows_options {
              computer_name = "${var.vm_name}"
              admin_password = "${var.local_adminpass}"
-             join_domain      = "${var.windomain}"
-             domain_admin_user = "${var.domain_admin_user}"
-             domain_admin_password = "${var.domain_admin_password}" 
+//             join_domain      = "${var.windomain}"
+//             domain_admin_user = "${var.domain_admin_user}"
+//             domain_admin_password = "${var.domain_admin_password}" 
          }
         network_interface {}
       }
