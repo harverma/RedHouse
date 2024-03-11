@@ -88,10 +88,7 @@ resource "vsphere_virtual_machine" "vm" {
         timeout =60
         windows_options {
              computer_name = "${var.vm_name}"
-             admin_password = "${var.local_adminpass}"
-             join_domain      = "${var.windomain}"
-             domain_admin_user = "${var.domain_admin_user}"
-             domain_admin_password = "${var.domain_admin_password}" 
+             admin_password = "${var.local_adminpass}" 
          }
         network_interface {}
       }
